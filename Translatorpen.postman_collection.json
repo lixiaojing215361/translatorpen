@@ -1,0 +1,623 @@
+{
+	"info": {
+		"_postman_id": "42c80929-a04e-4cbb-a518-b771360b06d8",
+		"name": "Translatorpen",
+		"description": "Test postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "首次发送sms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd36ba70-35c3-4ebd-b393-0114f25b5e93",
+						"exec": [
+							"postman.setGlobalVariable(\"mobile\",\"15001131153\")",
+							"postman.setGlobalVariable(\"client_id\",1100)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "mobile",
+							"value": "{{mobile}}",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://account.sogou.com/wap/smsCodeLogin/sendSms?Accept=*/*&Content-Type=application/x-www-form-urlencoded; charset=UTF-8&Origin=http://10.142.86.216&Referer=http://10.142.86.216/statics/teem_transpen_share/index.html&User-Agent=Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+					"protocol": "https",
+					"host": [
+						"account",
+						"sogou",
+						"com"
+					],
+					"path": [
+						"wap",
+						"smsCodeLogin",
+						"sendSms"
+					],
+					"query": [
+						{
+							"key": "Accept",
+							"value": "*/*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/x-www-form-urlencoded; charset=UTF-8"
+						},
+						{
+							"key": "Origin",
+							"value": "http://10.142.86.216"
+						},
+						{
+							"key": "Referer",
+							"value": "http://10.142.86.216/statics/teem_transpen_share/index.html"
+						},
+						{
+							"key": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9378538c-746b-4d2c-addc-b8d2e887e989",
+						"exec": [
+							"postman.setGlobalVariable(\"token\",\"vr5sLo7HBsQbHyVyyHYdv9QovXXvNj9xnK0WymaAzdElrlLI\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://account.sogou.com/captcha?token={{token}}&client_id={{client_id}}",
+					"protocol": "https",
+					"host": [
+						"account",
+						"sogou",
+						"com"
+					],
+					"path": [
+						"captcha"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "再次发送短信",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "mobile",
+							"value": "{{mobile}}",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "16",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://account.sogou.com/wap/smsCodeLogin/sendSms?Accept=*/*&Content-Type=application/x-www-form-urlencoded; charset=UTF-8&Origin=http://10.142.86.216&Referer=http://10.142.86.216/statics/teem_transpen_share/index.html&User-Agent=Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+					"protocol": "https",
+					"host": [
+						"account",
+						"sogou",
+						"com"
+					],
+					"path": [
+						"wap",
+						"smsCodeLogin",
+						"sendSms"
+					],
+					"query": [
+						{
+							"key": "Accept",
+							"value": "*/*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/x-www-form-urlencoded; charset=UTF-8"
+						},
+						{
+							"key": "Origin",
+							"value": "http://10.142.86.216"
+						},
+						{
+							"key": "Referer",
+							"value": "http://10.142.86.216/statics/teem_transpen_share/index.html"
+						},
+						{
+							"key": "User-Agent",
+							"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"
+						}
+					]
+				},
+				"description": "发送短信"
+			},
+			"response": []
+		},
+		{
+			"name": "登录passport",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://10.142.86.216",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "http://10.142.86.216/statics/teem_transpen_share/index.html",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://account.sogou.com/wap/smsCode/login?mobile={{mobile}}&client_id={{client_id}}&v=0&captcha&smsCode=03176&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"account",
+						"sogou",
+						"com"
+					],
+					"path": [
+						"wap",
+						"smsCode",
+						"login"
+					],
+					"query": [
+						{
+							"key": "mobile",
+							"value": "{{mobile}}"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}"
+						},
+						{
+							"key": "v",
+							"value": "0"
+						},
+						{
+							"key": "captcha",
+							"value": null
+						},
+						{
+							"key": "smsCode",
+							"value": "03176"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "登录passport"
+			},
+			"response": []
+		},
+		{
+			"name": "登录搜狗录音笔账户",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd3176b3-417c-4a52-b416-4faf5366b8c6",
+						"exec": [
+							"",
+							"",
+							"//检查返回的状态是否为200",
+							"tests[\"返回的状态码是否为200\"] = responseCode.code === 200;",
+							"",
+							"//判断请求到返回的时间是否小于200ms",
+							"tests[\"返回时间是否小于200ms\"] = responseTime < 200;",
+							"",
+							"var jsonData;",
+							"try {",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    tests[\"返回的状态码是否是200\"] = jsonData.code === 200;",
+							"    tests[\"昵称是否正确\"] = jsonData.data.nick_name == \"15001131153\";",
+							"    tests[\"账号是否激活\"] = jsonData.data.active == 1;",
+							"    tests[\"头像是否为空\"] = jsonData.data.photo = \"http://img04.sogoucdn.com/app/a/200600/tr_portrait_Oj8TlUfO\"",
+							"}",
+							"catch (e) {}",
+							"",
+							"//判断active返回值类型是否是整形",
+							"tests[\"判断active返回值的类型是否是number\"] = typeof(jsonData.data.active) === \"number\"",
+							"//判断nick_name返回值类型是否是string",
+							"tests[\"判断nick_name返回值类型是否是string\"] = typeof(jsonData.data.nick_name) === \"string\"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "zh-CN,zh;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "86",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "{{host}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://10.142.86.216",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "http://10.142.86.216/statics/teem_transpen_share/index.html",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://10.142.86.216/tr/web/login.do?sgid=15-39699411-AVyLIv3fic0lXyBmaTNyUrCk&uid=15001131153@sohu.com&token=&web_type=2",
+					"protocol": "http",
+					"host": [
+						"10",
+						"142",
+						"86",
+						"216"
+					],
+					"path": [
+						"tr",
+						"web",
+						"login.do"
+					],
+					"query": [
+						{
+							"key": "sgid",
+							"value": "15-39699411-AVyLIv3fic0lXyBmaTNyUrCk"
+						},
+						{
+							"key": "uid",
+							"value": "15001131153@sohu.com"
+						},
+						{
+							"key": "token",
+							"value": ""
+						},
+						{
+							"key": "web_type",
+							"value": "2"
+						}
+					]
+				},
+				"description": "登录搜狗录音笔账户"
+			},
+			"response": []
+		},
+		{
+			"name": "获取单个会话",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "zh-CN,zh;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "fidtdqgeqeqbnu=XuN3u9fOayleyyQFH*kU9j5qeEg-wlcr",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "{{host}}",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "http://10.142.86.216/statics/teem_transpen_share/list.html",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://10.142.86.216/tr/web/storage/session/get.do?type=1&session_id=5630970001",
+					"protocol": "http",
+					"host": [
+						"10",
+						"142",
+						"86",
+						"216"
+					],
+					"path": [
+						"tr",
+						"web",
+						"storage",
+						"session",
+						"get.do"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "session_id",
+							"value": "5630970001"
+						}
+					]
+				},
+				"description": "选中单个会话，获取单个会话的音频和文本。"
+			},
+			"response": []
+		},
+		{
+			"name": "分享",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4669845-2625-4352-9f65-613d8dedf66b",
+						"exec": [
+							"//检查返回状态code是否为200",
+							"tests[\"返回状态是否等于200\"] = responseCode.code===200;",
+							"",
+							"//判断请求到返回的时间是否小于200毫秒",
+							"tests[\"返回时间是否小于200毫秒\"] = responseTime < 200;",
+							"",
+							"//将返回的body信息转换成json",
+							"var data = JSON.parse(responseBody);",
+							"",
+							"//检查返回的body里面是否包含某个字串",
+							"tests[\"pic_url是否存在\"] = responseBody.has(\"pic_url\");",
+							"tests[\"title是否存在\"] = responseBody.has(\"title\");",
+							"tests[\"url是否存在\"] = responseBody.has(\"url\");",
+							"tests[\"content是否存在\"] = responseBody.has(\"content\");",
+							"tests[\"desc是否存在\"] = responseBody.has(\"desc\");",
+							"//判断结果中是否存在code",
+							"tests[\"have code\"] = data.hasOwnProperty(\"code\") === true;",
+							"",
+							"//检查Content-Type是否包含在header返回",
+							"tests[\"Content-Type是否一起被返回\"] = postman.getResponseHeader(\"Content-Type\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "zh-CN,zh;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "13",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "fidtdqgeqeqbnu=XuN3u9fOayleyyQFH*kU9j5qeEg-wlcr",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "{{host}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://10.142.86.216",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "http://10.142.86.216/statics/teem_transpen_share/list.html",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://10.142.86.216/tr/web/tr2/share.do?id=5630970001",
+					"protocol": "http",
+					"host": [
+						"10",
+						"142",
+						"86",
+						"216"
+					],
+					"path": [
+						"tr",
+						"web",
+						"tr2",
+						"share.do"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5630970001"
+						}
+					]
+				},
+				"description": "复制链接，分享单个会话"
+			},
+			"response": []
+		}
+	]
+}
